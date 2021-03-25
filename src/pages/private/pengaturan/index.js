@@ -1,6 +1,9 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Pengguna from "./pengguna";
+
+//halaman induk pengaturan
+
 import Toko from "./toko";
 
 const Pengaturan = () => {
@@ -12,6 +15,8 @@ const Pengaturan = () => {
       <Route path='/pengaturan/toko'>
         <Toko />
       </Route>
+      <Redirect to='/pengaturan/pengguna' />
+      {/* redirect untuk mencegah direct halaman tidak diinginkan */}
     </Switch>
   );
 };

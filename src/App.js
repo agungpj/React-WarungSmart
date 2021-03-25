@@ -16,10 +16,21 @@ const App = () => {
       <Switch>
         <Route exact path='/'>
           <About />
+
+          {/* ======== Route Private  ======== */}
+        </Route>
+        <Route path='/transaksi'>
+          <Private />
         </Route>
         <Route path='/pengaturan'>
           <Private />
         </Route>
+        <Route path='/produk'>
+          <Private />
+        </Route>
+        {/* ======== Route Private  ======== */}
+
+        {/* ======== Route Publik  ======== */}
         <Route path='/login'>
           <Login />
         </Route>
@@ -32,6 +43,7 @@ const App = () => {
         <Route path=''>
           <Notfound />
         </Route>
+        {/* ======== Route Publik  ======== */}
       </Switch>
     </div>
   );
