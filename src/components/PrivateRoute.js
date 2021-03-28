@@ -1,10 +1,11 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
+import { useFirebase } from "./FirebaseProvider";
 
 const PrivateRoute = ({ component: Component, ...restProps }) => {
   // component : props seluruh component private.
+  const { user } = useFirebase();
 
-  const user = false;
   //kondisi jika user terautentikasi, maka return component private jika tidak redirect ke login.
 
   return (
