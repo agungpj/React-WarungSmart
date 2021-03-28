@@ -17,10 +17,11 @@ const FirebaseProvider = (props) => {
   const auth = firebase.auth();
   const firestore = firebase.firestore();
   const storage = firebase.storage();
-  //custom hook auth firebase.
+  //custom hook auth firebase dari thirdparty, memiliki 3 value..
   const [user, loading, error] = useAuthState(auth);
 
   return (
+    //usecontext
     <FirebaseContext.Provider
       value={{
         auth,
