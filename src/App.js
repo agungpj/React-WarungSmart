@@ -36,9 +36,10 @@ const App = () => {
                 {/* ======== Route Private  ======== */}
 
                 {/* ======== Route Publik  ======== */}
-                <Route path='/login' component={Login} />
 
                 <Route path='/registrasi' component={SignIn} />
+
+                <Route path='/login' component={Login} />
 
                 <Route path='/lupa-password' component={Lupapassword} />
 

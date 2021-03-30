@@ -14,7 +14,7 @@ const Private = () => {
         <Route path='/pengaturan' component={Pengaturan} />
         <Route path='/produk' component={Produk} />
         <Route path='/transaksi' component={Transaksi} />
-        <Route component={Home} />
+        <Route exact path='/' component={Home} />
       </Switch>
     </Router>
   );
