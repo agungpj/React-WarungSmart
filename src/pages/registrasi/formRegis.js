@@ -4,7 +4,6 @@ import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import URL from "@material-ui/core/Link";
-import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
@@ -16,6 +15,7 @@ import { useFirebase } from "../../components/FirebaseProvider";
 
 import { Link, Redirect } from "react-router-dom";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import AppLoading from "../../components/apploading";
 
 function Copyright() {
   return (
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
   },
   submit: {
-    margin: theme.spacing(3, 28, 2, 0),
+    margin: theme.spacing(3, 27, 2, 0),
   },
   login: {
     margin: theme.spacing(3, 0, 2),
@@ -89,7 +89,8 @@ export default function SignIn() {
     });
   };
 
-  const { auth, user } = useFirebase();
+  const { auth, user, loading } = useFirebase();
+  //value dr firebase
   //ketika submit
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -148,6 +149,10 @@ export default function SignIn() {
       }
     }
   };
+
+  if (loading) {
+    return <AppLoading />;
+  }
 
   if (user) {
     return <Redirect to='/' />;
@@ -219,7 +224,7 @@ export default function SignIn() {
             color='primary'
             className={classes.submit}
           >
-            Sign In
+            Register
           </Button>
           <Button
             disabled={submitting}
@@ -232,18 +237,6 @@ export default function SignIn() {
           >
             Login
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <URL href='#' variant='body2'>
-                Forgot password?
-              </URL>
-            </Grid>
-            <Grid item>
-              <URL href='#' variant='body2'>
-                {"Don't have an account? Sign Up"}
-              </URL>
-            </Grid>
-          </Grid>
         </form>
       </div>
       <Box mt={8}>

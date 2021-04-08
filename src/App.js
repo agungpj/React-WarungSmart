@@ -13,43 +13,50 @@ import FirebaseProvider from "./components/FirebaseProvider";
 import CssBaseLine from "@material-ui/core/CssBaseLine";
 //import theme provider.
 import ThemeProvider from "@material-ui/styles/ThemeProvider";
+//import snackbar
+import { SnackbarProvider } from "notistack";
+
 //import config theme
 import theme from "./config/theme";
+//import beranda public routing
+import Beranda from "./pages/beranda";
 
 const App = () => {
   return (
     <div>
       <CssBaseLine>
-        <ThemeProvider theme={theme}>
-          <FirebaseProvider>
-            <Router>
-              <Switch>
-                <PrivateRoute exact path='/' component={Private} />
-                {/* private direct ke login. */}
-                {/* ======== PrivateRoute Private  ======== */}
-                <PrivateRoute path='/transaksi' component={Private} />
+        <SnackbarProvider maxSnack={3} autoHideDuration={3000}>
+          <ThemeProvider theme={theme}>
+            <FirebaseProvider>
+              <Router>
+                <Switch>
+                  <Route exact path='/' component={Beranda} />
+                  {/* private direct ke login. */}
+                  {/* ======== PrivateRoute Private  ======== */}
+                  <PrivateRoute path='/transaksi' component={Private} />
 
-                <PrivateRoute path='/pengaturan' component={Private} />
+                  <PrivateRoute path='/pengaturan' component={Private} />
 
-                <PrivateRoute path='/produk' component={Private} />
+                  <PrivateRoute path='/produk' component={Private} />
 
-                {/* ======== Route Private  ======== */}
+                  {/* ======== Route Private  ======== */}
 
-                {/* ======== Route Publik  ======== */}
+                  {/* ======== Route Publik  ======== */}
 
-                <Route path='/registrasi' component={SignIn} />
+                  <Route path='/registrasi' component={SignIn} />
 
-                <Route path='/login' component={Login} />
+                  <Route path='/login' component={Login} />
 
-                <Route path='/lupa-password' component={Lupapassword} />
+                  <Route path='/lupa-password' component={Lupapassword} />
 
-                <Route component={Notfound} />
+                  <Route component={Notfound} />
 
-                {/* ======== Route Publik  ======== */}
-              </Switch>
-            </Router>
-          </FirebaseProvider>
-        </ThemeProvider>
+                  {/* ======== Route Publik  ======== */}
+                </Switch>
+              </Router>
+            </FirebaseProvider>
+          </ThemeProvider>
+        </SnackbarProvider>
       </CssBaseLine>
     </div>
   );
